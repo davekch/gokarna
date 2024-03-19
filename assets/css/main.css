@@ -9,15 +9,20 @@
 }
 
 @font-face {
-  font-family: Lato;
+  font-family: FiraSans;
   font-weight: 400;
-  src: url("/fonts/Lato-Regular.ttf");
+  src: url("/fonts/FiraSans-Regular.ttf");
 }
 
 @font-face {
-  font-family: Lato;
+  font-family: FiraSans;
   font-weight: 700;
-  src: url("/fonts/Lato-Bold.ttf");
+  src: url("/fonts/FiraSans-Bold.ttf");
+}
+
+@font-face {
+  font-family: FiraCode;
+  src: url("/fonts/FiraCode-Regular.ttf");
 }
 
 html {
@@ -306,6 +311,7 @@ pre {
   background-color: var(--light-tertiary-color);
   box-sizing: border-box;
   color: white;
+  font-family: 'FiraCode';
 }
 
 pre {
