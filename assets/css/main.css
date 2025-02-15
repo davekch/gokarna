@@ -29,7 +29,7 @@ html {
   background-color: rgb(var(--light-primary-color));
   color: var(--light-text-color);
   font-family: "Lato", sans-serif;
-  font-size: 17.5px;
+  font-size: var(--font-size);
   min-height: 100%;
   position: relative;
   scroll-behavior: smooth;
@@ -336,6 +336,18 @@ pre code {
   font-size: 0.9em;
 }
 
+/*
+Fix iOS font sizing in code blocks
+Author: https://github.com/bglw
+Source: https://github.com/adityatelange/hugo-PaperMod/issues/828#issuecomment-1171994855
+*/
+code {
+  text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
 blockquote {
   border-left: 2px solid var(--light-secondary-color);
   color: grey;
@@ -410,18 +422,22 @@ table td {
   font-size: 2em;
 }
 
-.social-icons {
+.home-about h2 {
+  font-size: 1.2em;
+}
+
+.gk-social-icons {
   text-align: center;
 }
 
-.social-icons .social-icons-list {
+.gk-social-icons .gk-social-icons-list {
   display: inline-block;
   list-style-type: none;
   padding: 0;
   text-align: center;
 }
 
-.social-icons-list .social-icon {
+.gk-social-icons-list .gk-social-icon {
   box-sizing: border-box;
   display: inline-block;
   fill: var(--light-text-color);
@@ -430,11 +446,11 @@ table td {
   width: 24px;
 }
 
-.social-icon a svg path {
+.gk-social-icon a svg path {
   transition: fill 0.15s ease;
 }
 
-.markdown-content {
+.home-content {
   line-height: 1.25;
   width: 80%;
   margin: 0 auto;
@@ -583,7 +599,7 @@ table td {
     width: auto;
   }
 
-  .markdown-content, .home-posts {
+  .home-content, .home-posts {
     width: auto;
     margin: 0;
   }
@@ -667,7 +683,7 @@ table td {
 }
 
 .arrow-logo:hover {
-  fill:  var(--accent-color); 
+  fill:  var(--accent-color);
 }
 
 @media screen and (max-width: 600px) {

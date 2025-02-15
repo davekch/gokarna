@@ -84,7 +84,8 @@ The `weight` attribute can be added in the markdown metadata for `post` types. W
 ### About description text
 
 In extension to the basic configuration with the `description` field, it's also possible to write the about section using markdown.
-Create a file called `index-about.md` in the `content` directory and write your content there.
+
+Create a file called `_index.md` in the `content` directory and write your content there.
 
 > **Attention**: Don't use frontmatter in this file. It would also render it.
 
@@ -106,12 +107,12 @@ Having the above about section in place, results in the following homepage:
 
 
 ## Icons
-Gokarna supports popular social media icons (Github, Linkedin, Twitter, StackOverflow, Dribbble, etc.) out of the box. See full list of supported icons [here](https://github.com/526avijitgupta/gokarna/tree/main/static/icons).
+Gokarna supports popular social media icons (Github, Linkedin, Twitter, StackOverflow, Dribbble, etc.) out of the box. See full list of supported icons [on GitHub](https://github.com/gokarna-theme/gokarna-hugo/tree/main/static/icons).
 
 ### Icons on homepage
 
-To display icons on the homepage, simply update the `socialIcons` config param with a list of name and url of each icon. The specified `name` should exactly match one of the names from [here](https://github.com/526avijitgupta/gokarna/tree/main/static/icons).
-If you want to add more icons, you can download the svg directly from [here](https://simpleicons.org/)  and place them in your local icons directory (`/static/icons/`)
+To display icons on the homepage, simply update the `socialIcons` config param with a list of name and url of each icon. The specified `name` should exactly match one of the names from [the `icons` directory](https://github.com/gokarna-theme/gokarna-hugo/tree/main/static/svg/icons).
+If you want to add more icons, you can download the svg directly from [Simple Icons' website](https://simpleicons.org/)  and place them in your local icons directory (`/static/svg/icons/`)
 
 ```toml
   [params]
@@ -316,4 +317,63 @@ and the `metaKeywords` specified in the config.toml:
 ```markdown
 [params]
   metaKeywords = ["blog", "gokarna", "hugo"]
+```
+
+## Hide tags, date or description of posts
+
+Tags can be used to categorize posts (e.g.: Project or Blog), and be hidden on
+the posts. Use the `params.hiddenTags` field in `hugo.toml`.  
+A post's date and description can be hidden if it has at least one tag listed in
+`params.tagsHidePostDate` or `params.tagsHidePostDescription`, respectively.
+
+
+```toml
+[params]
+  [params.hidden]
+  tags = ["project", "blog"]
+  tagsPostDate = ["project"]
+  tagsPostDescription = ["project"]
+  [menu]
+    [[menu.main]]
+      identifier = "projects"
+      url = "/tags/project/"
+      name = "My Projects"
+      weight = 1
+    [[menu.main]]
+      identifier = "blog"
+      url = "/tags/blog/"
+      name = "Blog"
+      weight = 2
+```
+
+## Site-wide copyright notice
+
+Define the [copyright notice for your site](https://gohugo.io/methods/site/copyright/). The notice will only be displayed on [page Kinds](#content-types).
+
+For example, the following configuration in `config.toml` and front matter respectively...
+
+```toml
+copyright = "Verbatim copying and distribution of this entire article are permitted worldwide, without royalty, in any medium, provided this notice is preserved."
+```
+
+```
+date: 2020-06-17
+lastmod: 2024-02-05
+```
+
+Will produce this footer:
+
+> © 2020-2024 The Marauders Verbatim copying and distribution of this entire article are permitted worldwide, without royalty, in any medium, provided this notice is preserved.
+
+`copyright` can include [Markdown syntax](https://www.markdownguide.org/tools/hugo/). This is best used for including hyperlinks, emoji, or text formatting.
+
+The years of `.Date` and `.Lastmod` are used to create a date range for your copyrighted material.
+
+## Minification
+
+`hugo`'s HTML output can be [minified](https://gohugo.io/hugo-pipes/minification/#usage), resulting in smaller files. This makes your site more performant (especially when paired with compression), and may confer a better [Google Lighthouse](https://pagespeed.web.dev/) score.
+
+```toml
+[minify]
+    minifyOutput = true
 ```
